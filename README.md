@@ -1,5 +1,7 @@
+
 # Wilderness-survival-Android-Download-Library
 ⚡️Wilderness-survival-Android-NetWorkLibrary(荒野求生之Android文件下载库) 通过retrofit下载文件，方便你轻松获取荒野中的各种资源！
+
 
 **1.集成步骤**
 
@@ -63,3 +65,4 @@ dependencies {
                 });
 ```
 
+可下载Demo查看具体的使用过程。里面包含下载安装Apk的方法和图片下载展示的方法。
