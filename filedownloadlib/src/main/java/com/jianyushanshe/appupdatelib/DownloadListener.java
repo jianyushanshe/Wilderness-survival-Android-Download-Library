@@ -15,10 +15,11 @@ public interface DownloadListener {
 
     /**
      * 下载进度
-     *
-     * @param progress
+     * @param progress 进度
+     * @param totalSize 文件总大小 byte
+     * @param downloadSize 文件已下载大小 byte
      */
-    void onProgress(int progress);
+    void onProgress(int progress, long totalSize, long downloadSize);
 
     /**
      * 下载成功
@@ -26,6 +27,7 @@ public interface DownloadListener {
      * @param file
      */
     void onDownloadFinish(File file);
+
     /**
      * 下载失败
      *

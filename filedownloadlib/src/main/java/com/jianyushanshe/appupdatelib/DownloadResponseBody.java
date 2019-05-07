@@ -60,6 +60,7 @@ public class DownloadResponseBody extends ResponseBody {
 
     /**
      * 读文件
+     *
      * @param source
      * @return
      */
@@ -78,11 +79,11 @@ public class DownloadResponseBody extends ResponseBody {
                             @Override
                             public void run() {
                                 //下载进度回调
-                                downloadListener.onProgress(progress);
+                                downloadListener.onProgress(progress, responseBody.contentLength(), totalBytesRead);
                             }
                         });
                     } else {
-                        downloadListener.onProgress(progress);
+                        downloadListener.onProgress(progress, responseBody.contentLength(), totalBytesRead);
                     }
                 }
                 return bytesRead;

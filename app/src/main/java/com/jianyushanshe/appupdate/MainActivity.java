@@ -21,12 +21,14 @@ import com.jianyushanshe.appupdatelib.DownloadListener;
 import com.jianyushanshe.appupdatelib.DownloadUtil;
 
 import java.io.File;
+import java.math.BigDecimal;
 
 import kr.co.namee.permissiongen.PermissionFail;
 import kr.co.namee.permissiongen.PermissionGen;
 import kr.co.namee.permissiongen.PermissionSuccess;
 
 import static android.widget.Toast.LENGTH_LONG;
+
 /**
  * Author:wangjianming
  * Time:2019/5/7
@@ -65,8 +67,8 @@ public class MainActivity extends AppCompatActivity {
                     }
 
                     @Override
-                    public void onProgress(int progress) {
-                        tvProgress.setText(progress + "%");
+                    public void onProgress(int progress, long totalSize, long downloadSize) {
+                        tvProgress.setText(progress + "%" + "--已下载：" + byte2Mega(downloadSize) + "/" + byte2Mega(totalSize));
                     }
 
                     @Override
@@ -164,4 +166,29 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    /**
+     * @param count byte长度
+     * @return 小于1m返回kb，否则返回mb
+     * @功能：将byte转化为kb或者mb
+     */
+    public static String byte2Mega(long count) {
+        StringBuffer sbf = new StringBuffer();
+        if (count < 1024 * 1024) {// 小于1m
+            float total = (float) count / 1024;
+            sbf.append(floatTo1p(total) + "KB");
+        } else {
+            float total = (float) count / 1024 / 1024;
+            sbf.append(floatTo1p(total) + "MB");
+        }
+
+        return sbf.toString();
+    }
+
+
+    // float保留一位数字
+    public static Float floatTo1p(float data) {
+        BigDecimal bd = new BigDecimal(data);
+        float num = bd.setScale(1, BigDecimal.ROUND_HALF_UP).floatValue();
+        return num;
+    }
 }
