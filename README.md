@@ -17,7 +17,8 @@ llprojects {
 
 ```
 dependencies {
-	     implementation 'com.github.jianyushanshe:Wilderness-survival-Android-NetWorkLibrary:5.4'
+	     	dependencies {
+	        implementation 'com.github.jianyushanshe:Wilderness-survival-Android-Download-Library:1.0'
 	}
 ```
 
@@ -47,7 +48,7 @@ dependencies {
                         //下载进度
                     }
 
-         			@Override
+         	    @Override
                     public void onDownloadFinish(File file) {
                         //下载完成，安装apk
                         //installApk(file);
