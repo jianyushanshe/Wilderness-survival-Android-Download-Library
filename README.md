@@ -29,17 +29,14 @@ dependencies {
 在需要下载文件的地方调用如下方法：
 
 ```
-	//baseUrl：基类url
-	//fileUrl：文件的url
+	//url：文件下载的完整url
 	//filePath:文件的SD卡完整存储路径
 	//downloadListener：下载监听
 	
-	//例如：http://k.zol-img.com.cn/sjbbs/7692/a7691515_s.jpg
-	//baseUrl="http://k.zol-img.com.cn/";  //必须以/结尾
-	//fileUrl="sjbbs/7692/a7691515_s.jpg";
-	//filePath=SD卡路径+"你的文件夹路径"+"文件名称.后缀";  getSdPath()+"/jianyushanshe/"+"jysh.jpg";
+	//url="http://k.zol-img.com.cn/sjbbs/7692/a7691515_s.jpg"; 
+	//filePath=SD卡路径+"你的文件夹路径"+"文件名称.后缀";  //例如：getSdPath()+"/jianyushanshe/"+"jysh.jpg";
 
-    DownloadUtil.getInstance().downloadFile(baseUrl, fileUrl, filePath, new DownloadListener() {
+    DownloadUtil.getInstance().downloadFile(url, filePath, new DownloadListener() {
                     @Override
                     public void onStartDownload() {
                       //开始下载
