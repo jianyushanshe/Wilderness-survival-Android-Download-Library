@@ -53,14 +53,13 @@ public class MainActivity extends AppCompatActivity {
         });
 
         //http://k.zol-img.com.cn/sjbbs/7692/a7691515_s.jpg
-        final String baseUrl = "http://k.zol-img.com.cn/";
-        final String url = "sjbbs/7692/a7691515_s.jpg";
+        final String url = "http://k.zol-img.com.cn/sjbbs/7692/a7691515_s.jpg";
         //文件完整路径
         final String filePath = getFileName(getSdPath() + "/jianyushanshe/", "jianyushanshe.png");
         btDownload.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                DownloadUtil.getInstance().downloadFile(baseUrl, url, filePath, new DownloadListener() {
+                DownloadUtil.getInstance().downloadFile(url, filePath, new DownloadListener() {
                     @Override
                     public void onStartDownload() {
                         Toast.makeText(getApplicationContext(), "开始下载", Toast.LENGTH_SHORT).show();

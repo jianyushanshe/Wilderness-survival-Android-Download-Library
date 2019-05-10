@@ -57,18 +57,25 @@ public class DownloadUtil {
     /**
      * 文件下载
      *
-     * @param baseUrl          baseUrl  例如：http://www.baidu.com/
-     * @param fileUrl          文件url，baseUrl后面拼接的部分，文件的后缀决定了文件的类型例如.jpg为图片;.apk为安卓安装包   例如：apk/jianyushanshe.apk
+     * @param url              文件下载url
      * @param filePath         文件在sd卡存储的完整路径  例如：Android/data/com.jianyushanshe.appupdate/jianyushanshe.apk
      * @param downloadListener 下载监听
      */
-    public void downloadFile(final String baseUrl, final String fileUrl, final String filePath, final DownloadListener downloadListener) {
+    public void downloadFile(final String url, final String filePath, final DownloadListener downloadListener) {
+        //url的截取
+
+        //从小标10开始，获取第一个“/”的下标
+        int index = url.indexOf("/", 10);
+        //截取字符串，从小标0到index+1
+        final String baseUrl = url.substring(0, index + 1);
+        //截取字符串，从index+1到结尾
+        final String fileUrl = url.substring(index + 1);
         //线程池管理
         final Executor executor = new MainThreadExecutor();
         //下载拦截器
         final DownloadIntercepter downloadIntercepter = new DownloadIntercepter(downloadListener, executor);
         //创建okhttp客户端
-        OkHttpClient okHttpClient = new OkHttpClient.Builder()
+        final OkHttpClient okHttpClient = new OkHttpClient.Builder()
                 .addInterceptor(downloadIntercepter)
                 .retryOnConnectionFailure(true)
                 .connectTimeout(DEFAULT_TIMEOUT, TimeUnit.SECONDS)
