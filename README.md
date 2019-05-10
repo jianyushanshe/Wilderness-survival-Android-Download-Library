@@ -46,8 +46,11 @@ dependencies {
                     }
 
                     @Override
-                    public void onProgress(int progress) {
-                        //下载进度
+                    public void onProgress(int progress, long totalSize, long downloadSize) {
+                        //progress下载进度
+                        //totalSize 文件总大小 byte
+                        //downloadSize 文件已下载大小 byte
+                        
                     }
 
          	    @Override
