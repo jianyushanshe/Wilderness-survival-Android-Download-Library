@@ -2,7 +2,4 @@
 <paths>
     <external-path path="Android/data/com.jianyushanshe.appupdate/" name="files_root" />
     <external-path path="." name="external_storage_root" />
-    <external-path
-        name="camera_photos"
-        path="" />
 </paths>
